@@ -2,6 +2,7 @@ services:
   - type: web
     name: nexora-web
     runtime: node
+    rootDir: nexora-render
     plan: starter
     buildCommand: node --check server.cjs
     startCommand: node server.cjs
