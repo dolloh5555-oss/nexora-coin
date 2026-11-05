@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: nexora-web
+    runtime: node
+    plan: starter
+    buildCommand: node --check server.cjs
+    startCommand: node server.cjs
+    healthCheckPath: /healthz
+    numInstances: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: NEX_DATA_DIR
+        value: /var/data/nexora
+      - key: NEX_SETUP_TOKEN
+        generateValue: true
+    disk:
+      name: nexora-data
+      mountPath: /var/data
+      sizeGB: 1
